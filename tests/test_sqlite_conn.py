@@ -1,29 +1,21 @@
-# Example usage:
-from services.sqlite_connection import SQLiteConnection
+import os
+import sys
 
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(ROOT_DIR)
+
+from services.sqlite_connection import SQLiteConnection
+from dotenv import load_dotenv
 
 if __name__ == "__main__":
-    db = SQLiteConnection("example.db")
+    load_dotenv()
+    db = SQLiteConnection(os.environ.get("SQLITE_DB_PATH", "database/chinook.db"))
     db.connect()
 
-    # Create a sample table
-    db.execute_query(
-        """
-    CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        email TEXT NOT NULL UNIQUE
-    )
-    """
-    )
-
-    # Insert a sample user
-    db.execute_query("INSERT INTO users (name, email) VALUES (?, ?)", ("John Doe", "john@example.com"))
-
     # Fetch and print all users
-    users = db.fetch_all("SELECT * FROM users")
-    for user in users:
-        print(user)
+    employees = db.fetch_all("select * from employees;")
+    for employee in employees:
+        print(employee)
 
     # Close the connection
     db.close()

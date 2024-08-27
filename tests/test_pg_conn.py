@@ -1,29 +1,24 @@
-# Example usage:
-from services.postgresql_connection import PostgreSQLConnection
+import os
+import sys
 
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(ROOT_DIR)
+
+from services.postgresql_connection import PostgreSQLConnection
+from dotenv import load_dotenv
 
 if __name__ == "__main__":
-    db = PostgreSQLConnection(db_name="your_db_name", user="your_username", password="your_password", host="your_host", port=5432)  # Default is 'localhost'  # Default is 5432
+    load_dotenv()
+    db = PostgreSQLConnection(
+        db_name=os.environ.get("POSTGRES_DB_NAME", "northwind"),
+        user=os.environ.get("POSTGRES_USER", "postgres"),
+        password=os.environ.get("POSTGRES_PASSWORD", "postgres"),
+        host=os.environ.get("POSTGRES_HOST", "localhost"),
+        port=5432,
+    )
+
     db.connect()
-
-    # Create a sample table
-    db.execute_query(
-        """
-    CREATE TABLE IF NOT EXISTS users (
-        id SERIAL PRIMARY KEY,
-        name VARCHAR(100) NOT NULL,
-        email VARCHAR(100) NOT NULL UNIQUE
-    )
-    """
-    )
-
-    # Insert a sample user
-    db.execute_query("INSERT INTO users (name, email) VALUES (%s, %s)", ("John Doe", "john@example.com"))
-
-    # Fetch and print all users
-    users = db.fetch_all("SELECT * FROM users")
-    for user in users:
-        print(user)
-
-    # Close the connection
+    customers = db.fetch_all('SELECT * FROM "customers" WHERE "company_name"::TEXT LIKE %s ORDER BY "customer_id";', ("An%",))
+    for customer in customers:
+        print(customer)
     db.close()
