@@ -43,8 +43,11 @@ class ChatGPTConnection:
                 max_tokens=4096 if self.model == "gpt-4o" else 16384,
                 temperature=0,
             )
-
-            return json.loads(response.choices[0].message.content)
+            response_message = response.choices[0].message.content
+            response_message_json_first = response_message.find("{")
+            response_message_json_last = response_message.rfind("}")
+            json_message = response_message[response_message_json_first : response_message_json_last + 1]
+            return json.loads(json_message)
         except openai.OpenAIError as e:
             print(f"Error querying ChatGPT: {e}")
             raise

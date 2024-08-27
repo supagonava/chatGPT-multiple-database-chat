@@ -4,11 +4,10 @@
 -- https://tableplus.com/
 --
 -- Database: chinook.db
--- Generation Time: 2567-08-27 11:52:39.6080
+-- Generation Time: 2567-08-27 13:05:54.0280
 -- -------------------------------------------------------------
 
 
-DROP TABLE IF EXISTS "albums";
 CREATE TABLE "albums"
 (
     [AlbumId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -18,14 +17,12 @@ CREATE TABLE "albums"
 		ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-DROP TABLE IF EXISTS "artists";
 CREATE TABLE "artists"
 (
     [ArtistId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     [Name] NVARCHAR(120)
 );
 
-DROP TABLE IF EXISTS "customers";
 CREATE TABLE "customers"
 (
     [CustomerId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -45,7 +42,6 @@ CREATE TABLE "customers"
 		ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-DROP TABLE IF EXISTS "employees";
 CREATE TABLE "employees"
 (
     [EmployeeId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -67,14 +63,12 @@ CREATE TABLE "employees"
 		ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-DROP TABLE IF EXISTS "genres";
 CREATE TABLE "genres"
 (
     [GenreId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     [Name] NVARCHAR(120)
 );
 
-DROP TABLE IF EXISTS "invoice_items";
 CREATE TABLE "invoice_items"
 (
     [InvoiceLineId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -88,7 +82,6 @@ CREATE TABLE "invoice_items"
 		ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-DROP TABLE IF EXISTS "invoices";
 CREATE TABLE "invoices"
 (
     [InvoiceId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -104,14 +97,12 @@ CREATE TABLE "invoices"
 		ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-DROP TABLE IF EXISTS "media_types";
 CREATE TABLE "media_types"
 (
     [MediaTypeId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     [Name] NVARCHAR(120)
 );
 
-DROP TABLE IF EXISTS "playlist_track";
 CREATE TABLE "playlist_track"
 (
     [PlaylistId] INTEGER  NOT NULL,
@@ -123,20 +114,16 @@ CREATE TABLE "playlist_track"
 		ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-DROP TABLE IF EXISTS "playlists";
 CREATE TABLE "playlists"
 (
     [PlaylistId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     [Name] NVARCHAR(120)
 );
 
-DROP TABLE IF EXISTS "sqlite_sequence";
 CREATE TABLE sqlite_sequence(name,seq);
 
-DROP TABLE IF EXISTS "sqlite_stat1";
 CREATE TABLE sqlite_stat1(tbl,idx,stat);
 
-DROP TABLE IF EXISTS "tracks";
 CREATE TABLE "tracks"
 (
     [TrackId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,

@@ -4,11 +4,10 @@
 -- https://tableplus.com/
 --
 -- Database: northwind
--- Generation Time: 2567-08-27 11:49:32.5950
+-- Generation Time: 2567-08-27 11:56:28.4640
 -- -------------------------------------------------------------
 
 
-DROP TABLE IF EXISTS "public"."categories";
 -- This script only contains the table creation statements and does not fully represent the table in the database. Do not use it as a backup.
 
 -- Table Definition
@@ -20,7 +19,6 @@ CREATE TABLE "public"."categories" (
     PRIMARY KEY ("category_id")
 );
 
-DROP TABLE IF EXISTS "public"."customer_customer_demo";
 -- This script only contains the table creation statements and does not fully represent the table in the database. Do not use it as a backup.
 
 -- Table Definition
@@ -30,7 +28,6 @@ CREATE TABLE "public"."customer_customer_demo" (
     PRIMARY KEY ("customer_id","customer_type_id")
 );
 
-DROP TABLE IF EXISTS "public"."customer_demographics";
 -- This script only contains the table creation statements and does not fully represent the table in the database. Do not use it as a backup.
 
 -- Table Definition
@@ -40,7 +37,6 @@ CREATE TABLE "public"."customer_demographics" (
     PRIMARY KEY ("customer_type_id")
 );
 
-DROP TABLE IF EXISTS "public"."customers";
 -- This script only contains the table creation statements and does not fully represent the table in the database. Do not use it as a backup.
 
 -- Table Definition
@@ -59,7 +55,6 @@ CREATE TABLE "public"."customers" (
     PRIMARY KEY ("customer_id")
 );
 
-DROP TABLE IF EXISTS "public"."employee_territories";
 -- This script only contains the table creation statements and does not fully represent the table in the database. Do not use it as a backup.
 
 -- Table Definition
@@ -69,7 +64,6 @@ CREATE TABLE "public"."employee_territories" (
     PRIMARY KEY ("employee_id","territory_id")
 );
 
-DROP TABLE IF EXISTS "public"."employees";
 -- This script only contains the table creation statements and does not fully represent the table in the database. Do not use it as a backup.
 
 -- Table Definition
@@ -95,7 +89,6 @@ CREATE TABLE "public"."employees" (
     PRIMARY KEY ("employee_id")
 );
 
-DROP TABLE IF EXISTS "public"."order_details";
 -- This script only contains the table creation statements and does not fully represent the table in the database. Do not use it as a backup.
 
 -- Table Definition
@@ -108,7 +101,6 @@ CREATE TABLE "public"."order_details" (
     PRIMARY KEY ("order_id","product_id")
 );
 
-DROP TABLE IF EXISTS "public"."orders";
 -- This script only contains the table creation statements and does not fully represent the table in the database. Do not use it as a backup.
 
 -- Table Definition
@@ -130,7 +122,6 @@ CREATE TABLE "public"."orders" (
     PRIMARY KEY ("order_id")
 );
 
-DROP TABLE IF EXISTS "public"."products";
 -- This script only contains the table creation statements and does not fully represent the table in the database. Do not use it as a backup.
 
 -- Table Definition
@@ -148,7 +139,6 @@ CREATE TABLE "public"."products" (
     PRIMARY KEY ("product_id")
 );
 
-DROP TABLE IF EXISTS "public"."region";
 -- This script only contains the table creation statements and does not fully represent the table in the database. Do not use it as a backup.
 
 -- Table Definition
@@ -158,7 +148,6 @@ CREATE TABLE "public"."region" (
     PRIMARY KEY ("region_id")
 );
 
-DROP TABLE IF EXISTS "public"."shippers";
 -- This script only contains the table creation statements and does not fully represent the table in the database. Do not use it as a backup.
 
 -- Table Definition
@@ -169,7 +158,6 @@ CREATE TABLE "public"."shippers" (
     PRIMARY KEY ("shipper_id")
 );
 
-DROP TABLE IF EXISTS "public"."suppliers";
 -- This script only contains the table creation statements and does not fully represent the table in the database. Do not use it as a backup.
 
 -- Table Definition
@@ -189,7 +177,6 @@ CREATE TABLE "public"."suppliers" (
     PRIMARY KEY ("supplier_id")
 );
 
-DROP TABLE IF EXISTS "public"."territories";
 -- This script only contains the table creation statements and does not fully represent the table in the database. Do not use it as a backup.
 
 -- Table Definition
@@ -200,7 +187,6 @@ CREATE TABLE "public"."territories" (
     PRIMARY KEY ("territory_id")
 );
 
-DROP TABLE IF EXISTS "public"."us_states";
 -- This script only contains the table creation statements and does not fully represent the table in the database. Do not use it as a backup.
 
 -- Table Definition
@@ -247,9 +233,9 @@ ALTER TABLE "public"."order_details" ADD FOREIGN KEY ("order_id") REFERENCES "pu
 
 -- Indices
 CREATE UNIQUE INDEX pk_order_details ON public.order_details USING btree (order_id, product_id);
+ALTER TABLE "public"."orders" ADD FOREIGN KEY ("customer_id") REFERENCES "public"."customers"("customer_id");
 ALTER TABLE "public"."orders" ADD FOREIGN KEY ("employee_id") REFERENCES "public"."employees"("employee_id");
 ALTER TABLE "public"."orders" ADD FOREIGN KEY ("ship_via") REFERENCES "public"."shippers"("shipper_id");
-ALTER TABLE "public"."orders" ADD FOREIGN KEY ("customer_id") REFERENCES "public"."customers"("customer_id");
 
 
 -- Indices

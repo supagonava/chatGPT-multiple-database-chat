@@ -1,0 +1,8 @@
+{
+    "agent_name": "chinook-db-agent",
+    "description": "Agent who know everything about albums, artists, customers, employees, genres, invoice_items, invoices, media_types, playlist_track, playlists, tracks",
+    "db_type": "sqlite3",
+    "prompt_file_path": "prompts/chinook-db-agent.txt",
+    "sql_schema_path": "database/chinnook-structure.sql",
+    "prompt": ""
+}

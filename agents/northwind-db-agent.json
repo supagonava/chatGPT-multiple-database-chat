@@ -1,0 +1,8 @@
+{
+    "agent_name": "northwind-db-agent",
+    "description": "Agent who know everything about categories,customer_customer_demo,customer_demographics,customers,employee_territories,employees,order_details,orders,products,region,shippers,suppliers,territories,us_states",
+    "db_type": "postgresql",
+    "prompt_file_path": "prompts/northwind-db-agent.txt",
+    "sql_schema_path": "database/northwind-structure.sql",
+    "prompt": ""
+}
